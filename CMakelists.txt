@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.16)
+
+project(peekie)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Debug)
+endif()
+
+set(GLFW_DIR "${CMAKE_SOURCE_DIR}/external/glfw")
+add_subdirectory(${GLFW_DIR})
+
+set(FMT_DIR "${CMAKE_SOURCE_DIR}/external/fmt")
+add_subdirectory(${FMT_DIR})
+
+set(SOURCES
+    src/main.cpp
+)
+
+add_executable(peekie ${SOURCES})
+
+target_link_libraries(peekie PRIVATE fmt glfw)
+
+target_include_directories(peekie PRIVATE include ${GLFW_DIR}/include)
