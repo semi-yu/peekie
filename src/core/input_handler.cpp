@@ -5,13 +5,15 @@
 
 #include <GLFW/glfw3.h>
 
-#include "../mouse/button_input_event_handler.cpp"
+#include "../mouse/input_event_handler.cpp"
+#include "../keyboard/input_event_handler.cpp"
 
 namespace peekie::core {
     class InputHandler {
         GLFWwindow* window;
-        std::unique_ptr<peekie::mouse::ButtonInputEventHandler> mouse_button_input_event_handler;
-    
+        std::unique_ptr<peekie::mouse::InputEventHandler> mouse_input_event_handler;
+        std::unique_ptr<peekie::keyboard::InputEventHandler> keyboard_input_event_handler;
+
     public:
         InputHandler(GLFWwindow* window) {
             this->window = window;
