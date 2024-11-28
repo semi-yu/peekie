@@ -18,15 +18,20 @@ namespace peekie::core {
         InputHandler(GLFWwindow* window) {
             this->window = window;
             glfwSetWindowUserPointer(window, this);
+
+            mouse_input_event_handler = std::make_unique<peekie::mouse::InputEventHandler>();
+            keyboard_input_event_handler = std::make_unique<peekie::keyboard::InputEventHandler>();
+
+            set_mouse_button_input_event_handler();
+            set_mouse_move_input_event_hanlder();
+            set_keyboard_input_event_handler();
         }
 
-        void set_mouse_button_input_event_handler(GLFWwindow* listening_window) {
-            mouse_button_input_event_handler = std::make_unique<peekie::mouse::ButtonInputEventHandler>();
-
+        void set_mouse_button_input_event_handler() {
             auto callback = [](GLFWwindow* window, int button, int action, int mod) {
                 auto instance = static_cast<InputHandler*>(glfwGetWindowUserPointer(window));
                 if (instance) {
-                    instance->mouse_button_input_event_handler->callback(button, action, mod);
+                    instance->mouse_input_event_handler->button_callback(button, action, mod);
                 }
             };
 
@@ -34,22 +39,13 @@ namespace peekie::core {
             glfwSetMouseButtonCallback(window, callback);
         }
 
-        void register_mouse_button_input_event_subscriber(
-            std::shared_ptr<peekie::mouse::IMouseButtonSubscriber> subscriber
-        ) {
-            mouse_button_input_event_handler->register_subscriber(subscriber);
-        }
-
-        /*
-        void set_mouse_move_input_event_handler(GLFWwindow* listening_window) {
-            mouse_move_input_event_handler = std::make_unique<peekie::mouse::MoveInputEventHandler>();
-
+        void set_mouse_move_input_event_hanlder() {
             auto callback = [](GLFWwindow* window, double pos_x, double pos_y) {
                 auto instance = static_cast<InputHandler*>(glfwGetWindowUserPointer(window));
                 if (instance) {
-                    instance->mouse_move_input_event_handler->callback(pos_x, pos_y);
-                } 
-            }
+                    instance->mouse_input_event_handler->move_callback(pos_x, pos_y);
+                }
+            };
 
             glfwSetCursorPosCallback(window, callback);
         }
