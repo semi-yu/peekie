@@ -53,7 +53,29 @@ namespace peekie::core {
 
             glfwSetCursorPosCallback(window, callback);
         }
-        */
+
+        void set_keyboard_input_event_handler() {
+            auto callback = [](GLFWwindow* window, int key, int scancode, int action, int mods) {
+                auto instance = static_cast<InputHandler*>(glfwGetWindowUserPointer(window));
+                if (instance) {
+                    instance->keyboard_input_event_handler->button_callback(key, scancode, action, mods);
+                }
+            };
+
+            glfwSetKeyCallback(window, callback);
+        }
+
+        void register_mouse_input_event_subscriber(
+            std::shared_ptr<peekie::mouse::ISubscriber> subscriber
+        ) {
+            mouse_input_event_handler->register_subscriber(subscriber);
+        }
+
+        void register_keyboard_input_event_subscriber(
+            std::shared_ptr<peekie::keyboard::ISubscriber> subscriber
+        ) {
+            keyboard_input_event_handler->register_subscriber(subscriber);
+        }
     };
 }
 
