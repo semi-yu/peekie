@@ -34,10 +34,8 @@ namespace peekie::mouse {
         };
 
         auto result = button_flag.find(button);
-
-        if (result != button_flag.end()) return result->second;
-        
-        throw std::invalid_argument(fmt::format("wrong button {}\n", button));
+        if (result == button_flag.end()) throw std::invalid_argument(fmt::format("wrong button {}\n", button));
+        return result->second;
     }
 
     enum class Action {
@@ -57,7 +55,6 @@ namespace peekie::mouse {
 
         auto result = action_flag.find(action);
         if (result == action_flag.end()) throw std::invalid_argument(fmt::format("wrong action {}\n", action));
-
         return result->second;
     }
 
@@ -84,7 +81,6 @@ namespace peekie::mouse {
 
         auto result = modifier_flag.find(modifier);
         if (result == modifier_flag.end()) throw std::invalid_argument(fmt::format("wrong modifier {}\n", modifier));
-
         return result->second;
     }
 }
