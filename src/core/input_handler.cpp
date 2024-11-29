@@ -7,12 +7,14 @@
 
 #include "../mouse/input_event_handler.cpp"
 #include "../keyboard/input_event_handler.cpp"
+#include "../window/input_event_handler.cpp"
 
 namespace peekie::core {
     class InputHandler {
         GLFWwindow* window;
         std::unique_ptr<peekie::mouse::InputEventHandler> mouse_input_event_handler;
         std::unique_ptr<peekie::keyboard::InputEventHandler> keyboard_input_event_handler;
+        std::unique_ptr<peekie::window::InputEventHandler> window_input_event_handler;
 
     public:
         InputHandler(GLFWwindow* window) {
@@ -21,11 +23,13 @@ namespace peekie::core {
 
             mouse_input_event_handler = std::make_unique<peekie::mouse::InputEventHandler>();
             keyboard_input_event_handler = std::make_unique<peekie::keyboard::InputEventHandler>();
+            window_input_event_handler = std::make_unique<peekie::window::InputEventHandler>();
 
             set_mouse_button_input_event_handler();
             set_mouse_move_input_event_hanlder();
             set_mouse_scroll_input_event_handler();
             set_keyboard_input_event_handler();
+            set_window_input_event_handler();
         }
 
         void set_mouse_button_input_event_handler() {
@@ -73,6 +77,17 @@ namespace peekie::core {
             glfwSetKeyCallback(window, callback);
         }
 
+        void set_window_input_event_handler() {
+            auto callback = [](GLFWwindow* window, int width, int height) {
+                auto instance = static_cast<InputHandler*>(glfwGetWindowUserPointer(window));
+                if (instance) {
+                    instance->window_input_event_handler->resize_callback(width, height);
+                }
+            };
+
+            glfwSetFramebufferSizeCallback(window, callback);
+        }
+
         void register_mouse_input_event_subscriber(
             std::shared_ptr<peekie::mouse::ISubscriber> subscriber
         ) {
@@ -83,6 +98,12 @@ namespace peekie::core {
             std::shared_ptr<peekie::keyboard::ISubscriber> subscriber
         ) {
             keyboard_input_event_handler->register_subscriber(subscriber);
+        }
+
+        void register_window_input_event_subscriber(
+            std::shared_ptr<peekie::window::ISubscriber> subscriber
+        ) {
+            window_input_event_handler->register_subscriber(subscriber);
         }
     };
 }
