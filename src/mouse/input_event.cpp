@@ -16,10 +16,10 @@ namespace peekie::mouse {
         InputEvent(
             const InputEvent& event
         ) {
-            this->button = event.button;
-            this->action = event.action;
-            this->modifier = event.modifier;
-            
+            button = event.button;
+            action = event.action;
+            modifier = event.modifier;
+
             cursor_pos_x = event.cursor_pos_x;
             cursor_pos_y = event.cursor_pos_y;
         }
