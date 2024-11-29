@@ -24,6 +24,7 @@ namespace peekie::core {
 
             set_mouse_button_input_event_handler();
             set_mouse_move_input_event_hanlder();
+            set_mouse_scroll_input_event_handler();
             set_keyboard_input_event_handler();
         }
 
@@ -48,6 +49,17 @@ namespace peekie::core {
             };
 
             glfwSetCursorPosCallback(window, callback);
+        }
+
+        void set_mouse_scroll_input_event_handler() {
+            auto callback = [](GLFWwindow* window, double offset_x, double offset_y) {
+                auto instance = static_cast<InputHandler*>(glfwGetWindowUserPointer(window));
+                if (instance) {
+                    instance->mouse_input_event_handler->scroll_callback(offset_x, offset_y);
+                }
+            };
+
+            glfwSetScrollCallback(window, callback);
         }
 
         void set_keyboard_input_event_handler() {
