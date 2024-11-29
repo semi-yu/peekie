@@ -18,11 +18,7 @@ namespace peekie::mouse {
         peekie::mouse::InputEvent last_event;
 
     public:
-        void button_callback(int button, int action, int mod) {
-            last_event.button = peekie::mouse::get_button_flag(button);
-            last_event.action = peekie::mouse::get_action_flag(action);
-            last_event.modifier = peekie::mouse::get_modifier_flag(mod);
-
+        void update_last_event() {
             auto event = std::make_shared<peekie::mouse::InputEvent>(last_event);
 
             for(auto& subscriber: subscribers) {
@@ -30,15 +26,26 @@ namespace peekie::mouse {
             }
         }
 
+        void button_callback(int button, int action, int mod) {
+            last_event.button = peekie::mouse::get_button_flag(button);
+            last_event.action = peekie::mouse::get_action_flag(action);
+            last_event.modifier = peekie::mouse::get_modifier_flag(mod);
+
+            update_last_event();
+        }
+
         void move_callback(double pos_x, double pos_y) {
             last_event.cursor_pos_x = pos_x;
             last_event.cursor_pos_y = pos_y;
 
-            auto event = std::make_shared<peekie::mouse::InputEvent>(last_event);
+            update_last_event();
+        }
 
-            for(auto& subscriber: subscribers) {
-                subscriber->notify_mouse_input_event(event);
-            }
+        void scroll_callback(double offset_x, double offset_y) {
+            last_event.scroll_offset_x = offset_x;
+            last_event.scroll_offset_y = offset_y;
+
+            update_last_event();
         }
 
         void register_subscriber(std::shared_ptr<peekie::mouse::ISubscriber> subscriber) {
