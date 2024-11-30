@@ -18,7 +18,7 @@ namespace peekie::mouse {
         peekie::mouse::InputEvent last_event;
 
     public:
-        void update_last_event() {
+        void notify_event() {
             auto event = std::make_shared<peekie::mouse::InputEvent>(last_event);
 
             for(auto& subscriber: subscribers) {
@@ -31,14 +31,14 @@ namespace peekie::mouse {
             last_event.action = peekie::mouse::get_action_flag(action);
             last_event.modifier = peekie::mouse::get_modifier_flag(mod);
 
-            update_last_event();
+            notify_event();
         }
 
         void move_callback(double pos_x, double pos_y) {
             last_event.cursor_pos_x = pos_x;
             last_event.cursor_pos_y = pos_y;
 
-            update_last_event();
+            notify_event();
         }
 
         void scroll_callback(double offset_x, double offset_y) {
