@@ -12,6 +12,8 @@ namespace peekie::mouse {
         double cursor_pos_x = 0.0, cursor_pos_y = 0.0;
         double scroll_offset_x = 0.0, scroll_offset_y = 0.0;
 
+        int entered = false;
+
         InputEvent() {}
 
         InputEvent(
@@ -26,6 +28,8 @@ namespace peekie::mouse {
 
             scroll_offset_x = event.scroll_offset_x;
             scroll_offset_y = event.scroll_offset_y;
+
+            entered = event.entered;
         }
 
         peekie::mouse::Button get_button() const { return button; }
@@ -35,6 +39,7 @@ namespace peekie::mouse {
         double get_cursor_y() const { return cursor_pos_y; }
         double get_scroll_offset_x() const { return scroll_offset_x; }
         double get_scroll_offset_y() const { return scroll_offset_y; }
+        int cursor_over_window() const { return entered; }
     };
 }
 
