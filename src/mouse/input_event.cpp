@@ -32,6 +32,8 @@ namespace peekie::mouse {
             scroll_offset_y = event.scroll_offset_y;
 
             entered = event.entered;
+
+            dragging = event.dragging;
         }
 
         peekie::mouse::Button get_button() const { return button; }
@@ -42,6 +44,7 @@ namespace peekie::mouse {
         double get_scroll_offset_x() const { return scroll_offset_x; }
         double get_scroll_offset_y() const { return scroll_offset_y; }
         int cursor_over_window() const { return entered; }
+        bool is_dragging() const { return dragging; }
     };
 }
 
