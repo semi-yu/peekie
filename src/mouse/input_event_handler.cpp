@@ -45,7 +45,13 @@ namespace peekie::mouse {
             last_event.scroll_offset_x = offset_x;
             last_event.scroll_offset_y = offset_y;
 
-            update_last_event();
+            notify_event();
+        }
+
+        void enter_callback(int entered) {
+            last_event.entered = entered;
+
+            notify_event();
         }
 
         void register_subscriber(std::shared_ptr<peekie::mouse::ISubscriber> subscriber) {
