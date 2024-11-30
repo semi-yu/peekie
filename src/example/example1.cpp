@@ -22,6 +22,10 @@ namespace other {
       public peekie::window::ISubscriber {
     public:
         void notify_mouse_input_event(std::shared_ptr<peekie::mouse::InputEvent> event) {
+            if (event->cursor_over_window()) {
+                fmt::print(bg(fmt::color::yellow), "[input] Mouse cursor enterd!\n");
+            }
+
             fmt::print(bg(fmt::color::yellow), "[input] Mouse moved at {} {}!\n", event->cursor_pos_x, event->cursor_pos_y);
             fmt::print(bg(fmt::color::yellow), "[input] Mouse scrolled at {} {}\n", event->get_scroll_offset_x(), event->get_scroll_offset_y());
 
