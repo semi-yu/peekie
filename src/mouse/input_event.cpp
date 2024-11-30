@@ -5,14 +5,16 @@
 
 namespace peekie::mouse {
     struct InputEvent {
-        peekie::mouse::Button button;
-        peekie::mouse::Action action;
-        peekie::mouse::Modifier modifier;
+        peekie::mouse::Button button = peekie::mouse::Button::none;
+        peekie::mouse::Action action = peekie::mouse::Action::none;
+        peekie::mouse::Modifier modifier = peekie::mouse::Modifier::none;
 
         double cursor_pos_x = 0.0, cursor_pos_y = 0.0;
         double scroll_offset_x = 0.0, scroll_offset_y = 0.0;
 
         int entered = false;
+
+        bool dragging = false;
 
         InputEvent() {}
 
