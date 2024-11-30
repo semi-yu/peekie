@@ -32,7 +32,6 @@ namespace peekie::mouse {
                 event->dragging = false;
             }
 
-
             notify_event();
         }
 
