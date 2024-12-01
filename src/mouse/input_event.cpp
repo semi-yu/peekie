@@ -37,13 +37,21 @@ namespace peekie::mouse {
         }
 
         peekie::mouse::Button get_button() const { return button; }
+
         peekie::mouse::Action get_action() const { return action; }
+
         peekie::mouse::Modifier get_modifier() const { return modifier; }
+
         double get_cursor_x() const { return cursor_pos_x; }
+
         double get_cursor_y() const { return cursor_pos_y; }
+
         double get_scroll_offset_x() const { return scroll_offset_x; }
+
         double get_scroll_offset_y() const { return scroll_offset_y; }
+
         int cursor_over_window() const { return entered; }
+
         bool is_dragging() const { return dragging; }
     };
 }
