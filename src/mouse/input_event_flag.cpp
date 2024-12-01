@@ -1,5 +1,5 @@
-#ifndef __BUTTON_INPUT_EVENT_FLAG_CPP__
-#define __BUTTON_INPUT_EVENT_FLAG_CPP__
+#ifndef __MOUSE_INPUT_EVENT_FLAG_CPP__
+#define __MOUSE_INPUT_EVENT_FLAG_CPP__
 
 #include <unordered_map>
 #include <stdexcept>

@@ -1,5 +1,5 @@
-#ifndef __BUTTON_INPUT_EVENT_CPP__
-#define __BUTTON_INPUT_EVENT_CPP__
+#ifndef __MOUSE_INPUT_EVENT_CPP__
+#define __MOUSE_INPUT_EVENT_CPP__
 
 #include "./input_event_flag.cpp"
 
