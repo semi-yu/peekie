@@ -53,6 +53,20 @@ namespace peekie::mouse {
         int cursor_over_window() const { return entered; }
 
         bool is_dragging() const { return dragging; }
+
+        bool is_pressing(peekie::mouse::Button button) const {
+            return get_action() == peekie::mouse::Action::press
+            && get_button() == button; 
+        }
+
+        bool is_releasing(peekie::mouse::Button button) const {
+            return get_action() == peekie::mouse::Action::release
+            && get_button == button;
+        }
+
+        bool is_dragging(peekie::mouse::Button button) const {
+            return get_button() == button && dragging;
+        }
     };
 }
 
