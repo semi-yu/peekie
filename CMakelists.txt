@@ -23,7 +23,11 @@ set(SOURCES
 
 add_executable(peekie ${SOURCES})
 
-target_link_libraries(peekie PRIVATE fmt glfw)
+target_link_libraries(
+    peekie
+    PRIVATE fmt
+    PRIVATE glfw
+)
 
 option(ENABLE_TESTS "Build tests" ON)
 if(ENABLE_TESTS)
