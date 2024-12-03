@@ -14,6 +14,9 @@ add_subdirectory(${GLFW_DIR})
 set(FMT_DIR "${CMAKE_SOURCE_DIR}/external/fmt")
 add_subdirectory(${FMT_DIR})
 
+set(CATCH2_DIR "${CMAKE_SOURCE_DIR}/external/catch2")
+add_subdirectory(${CATCH2_DIR})
+
 set(SOURCES
     src/main.cpp
 )
@@ -22,4 +25,8 @@ add_executable(peekie ${SOURCES})
 
 target_link_libraries(peekie PRIVATE fmt glfw)
 
-target_include_directories(peekie PRIVATE include ${GLFW_DIR}/include)
+option(ENABLE_TESTS "Build tests" ON)
+if(ENABLE_TESTS)
+  enable_testing()
+  add_subdirectory(test)
+endif()
