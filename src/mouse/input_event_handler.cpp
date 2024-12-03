@@ -1,13 +1,4 @@
-#include <vector>
-#include <memory>
-
-#include <fmt/core.h>
-
 #include "./input_event_handler.hpp"
-
-#include "./input_event.hpp"
-#include "./input_event_flag.hpp"
-#include "./interface_mouse_subscriber.hpp"
 
 void peekie::mouse::InputEventHandler::notify_event() {
     for(auto& subscriber: subscribers) {

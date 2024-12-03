@@ -1,9 +1,4 @@
-#include <unordered_map>
-#include <string>
-
-#include <fmt/core.h>
-
-#include <GLFW/glfw3.h>
+#include "./input_event_flag.hpp"
 
 peekie::mouse::Button peekie::mouse::get_button_flag(int button) {
     static const std::unordered_map<int, peekie::mouse::Button> button_flag = {

@@ -1,9 +1,7 @@
 #ifndef __MOUSE_INPUT_EVENT_HPP__
 #define __MOUSE_INPUT_EVENT_HPP__
 
-class peekie::mouse::Button;
-class peekie::mouse::Action;
-class peekie::mouse::Modifier;
+#include "./input_event_flag.hpp"
 
 namespace peekie::mouse {
     struct InputEvent {

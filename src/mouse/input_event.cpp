@@ -1,5 +1,4 @@
 #include "./input_event.hpp"
-#include "./input_event_flag.hpp"
 
 peekie::mouse::InputEvent::InputEvent() {}
 

@@ -6,8 +6,8 @@
 
 #include <fmt/core.h>
 
-class peekie::mouse::ISubscriber;
-class peekie::mouse::InputEvent;
+#include "./input_event.hpp"
+#include "./interface_mouse_subscriber.hpp"
 
 namespace peekie::mouse {
     class InputEventHandler {

@@ -3,7 +3,7 @@
 
 #include <memory>
 
-class peekie::mouse::InputEvent;
+#include "./input_event.hpp"
 
 namespace peekie::mouse {
     class ISubscriber {
