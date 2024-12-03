@@ -11,7 +11,8 @@
 #include <fmt/color.h>
 
 #include "../core/input_handler.cpp"
-#include "../mouse/interface_mouse_subscriber.cpp"
+
+#include "../mouse/interface_mouse_subscriber.hpp"
 #include "../keyboard/interface_keyboard_subscriber.cpp"
 #include "../window/interface_window_subscriber.cpp"
 
