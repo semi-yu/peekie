@@ -45,7 +45,7 @@ bool peekie::mouse::InputEvent::is_pressing(peekie::mouse::Button button) const 
 
 bool peekie::mouse::InputEvent::is_releasing(peekie::mouse::Button button) const {
     return get_action() == peekie::mouse::Action::release
-    && get_button == button;
+    && get_button() == button;
 }
 
 bool peekie::mouse::InputEvent::is_dragging(peekie::mouse::Button button) const {
