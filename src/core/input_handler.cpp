@@ -116,5 +116,3 @@ namespace peekie::core {
         }
     };
 }
-
-#endif
