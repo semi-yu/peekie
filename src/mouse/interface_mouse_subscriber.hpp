@@ -1,9 +1,9 @@
-#ifndef __INTERFACE_MOUSE_SUBSCRIBER_CPP__
-#define __INTERFACE_MOUSE_SUBSCRIBER_CPP__
+#ifndef __INTERFACE_MOUSE_SUBSCRIBER_HPP__
+#define __INTERFACE_MOUSE_SUBSCRIBER_HPP__
 
 #include <memory>
 
-#include "./input_event.cpp"
+class peekie::mouse::InputEvent;
 
 namespace peekie::mouse {
     class ISubscriber {
