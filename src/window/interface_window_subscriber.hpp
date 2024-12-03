@@ -1,9 +1,9 @@
-#ifndef __INTERFACE_WINDOW_SUBSCRIBER_CPP__
-#define __INTERFACE_WINDOW_SUBSCRIBER_CPP__
+#ifndef __INTERFACE_WINDOW_SUBSCRIBER_HPP__
+#define __INTERFACE_WINDOW_SUBSCRIBER_HPP__
 
 #include <memory>
 
-#include "./input_event.cpp"
+#include "./input_event.hpp"
 
 namespace peekie::window {
     class ISubscriber {
