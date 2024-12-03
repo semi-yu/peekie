@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.2)
+
+project(peekie-test)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Debug)
+endif()
+
+set(TEST_SOURCES
+    test_main.cpp
+)
+
+add_executable(peekie-test ${TEST_SOURCES})
+
+target_link_libraries(
+    peekie-test
+    PRIVATE fmt 
+    PRIVATE glfw
+    PRIVATE Catch2::Catch2WithMain
+)
+
+target_include_directories(peekie-test PRIVATE ${CMAKE_SOURCE_DIR}/external/catch2/src/catch2)
+
+include(CTest)
+include(Catch)
+catch_discover_tests(peekie-test)
