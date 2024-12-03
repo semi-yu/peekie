@@ -1,11 +1,8 @@
-#ifndef __INPUT_HANDLER_CPP__
-#define __INPUT_HANDLER_CPP__
-
 #include <memory>
 
 #include <GLFW/glfw3.h>
 
-#include "../mouse/input_event_handler.cpp"
+#include "../mouse/input_event_handler.hpp"
 #include "../keyboard/input_event_handler.cpp"
 #include "../window/input_event_handler.cpp"
 
