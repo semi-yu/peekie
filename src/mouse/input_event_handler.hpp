@@ -4,8 +4,6 @@
 #include <vector>
 #include <memory>
 
-#include <fmt/core.h>
-
 #include "./input_event.hpp"
 #include "./interface_mouse_subscriber.hpp"
 

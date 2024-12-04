@@ -4,10 +4,6 @@
 #include <unordered_map>
 #include <string>
 
-#include <fmt/core.h>
-
-#include <GLFW/glfw3.h>
-
 namespace peekie::keyboard {
     enum class Button {
         none,

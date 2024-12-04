@@ -4,10 +4,6 @@
 #include <vector>
 #include <memory>
 
-#include <GLFW/glfw3.h>
-
-#include <fmt/core.h>
-
 #include "./input_event.hpp"
 #include "./interface_keyboard_subscriber.hpp"
 

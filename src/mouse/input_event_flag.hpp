@@ -2,11 +2,6 @@
 #define __MOUSE_INPUT_EVENT_FLAG_HPP__
 
 #include <unordered_map>
-#include <string>
-
-#include <fmt/core.h>
-
-#include <GLFW/glfw3.h>
 
 namespace peekie::mouse {
     enum class Button {

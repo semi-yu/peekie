@@ -2,8 +2,7 @@
 #define __WINDOW_INPUT_EVENT_HANDLER_HPP__
 
 #include <vector>
-
-#include <GLFW/glfw3.h>
+#include <memory>
 
 #include "./input_event.hpp"
 #include "./interface_window_subscriber.hpp"
