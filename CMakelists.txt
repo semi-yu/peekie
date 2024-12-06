@@ -18,7 +18,15 @@ set(CATCH2_DIR "${CMAKE_SOURCE_DIR}/external/catch2")
 add_subdirectory(${CATCH2_DIR})
 
 set(SOURCES
-    src/main.cpp
+    src/core/input_handler.cpp
+    src/mouse/input_event_flag.cpp
+    src/mouse/input_event_handler.cpp
+    src/mouse/input_event.cpp
+    src/keyboard/input_event_flag.cpp
+    src/keyboard/input_event_handler.cpp
+    src/keyboard/input_event.cpp
+    src/window/input_event_handler.cpp
+    src/window/input_event.cpp
 )
 
 add_executable(peekie ${SOURCES})
