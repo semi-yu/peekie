@@ -1,0 +1,10 @@
+PROJECT_NAME = "peekie"
+
+# 폴더 설정. INPUT 폴더를 비워놓으면 current directory가 대상이 된다
+INPUT = src/
+OUTPUT_DIRECTORY = build_doc
+RECURSIVE = YES
+
+# html만 생성하기
+GENERATE_HTML  = YES
+GENERATE_LATEX = NO
