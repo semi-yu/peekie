@@ -1,5 +1,11 @@
 #include "./input_event_flag.hpp"
 
+/**
+ * @details GLFW 키보드 이벤트의 버튼 플래그를 peekie 버튼 플래그로 변환합니다. 
+ * @param[in] button GLFW의 키보드 이벤트의 버튼 플래그
+ * @warning 알수 없는 키의 경우에는 peekie::keyboard::Button::none을 반환합니다.
+ * @return peekie::keyboard::Button
+ */
 peekie::keyboard::Button peekie::keyboard::get_button_flag(int button) {
     static const std::unordered_map<int, peekie::keyboard::Button> button_flag = {
         { 32, peekie::keyboard::Button::space },
@@ -90,10 +96,23 @@ peekie::keyboard::Button peekie::keyboard::get_button_flag(int button) {
     return result->second;
 }
 
+/**
+ * @details GLFW 키보드 이벤트의 스캔코드 플래그를 peekie 버튼 플래그로 변환합니다. 
+ * @param[in] scancode GLFW의 키보드 이벤트의 스캔코드 플래그
+ * @return peekie::keyboard::Scancode
+ * @warning 현재 라이브러리는 scancode의 none만 반환하도록 하고있습니다. 이는 차후 변경됩니다.
+ * @todo Scancode를 도입합니다. 
+ */
 peekie::keyboard::Scancode peekie::keyboard::get_scancode_flag(int scancode) {
     return peekie::keyboard::Scancode::none;
 }
 
+/**
+ * @details GLFW 키보드 이벤트의 액션 플래그를 peekie 액션 플래그로 변환합니다.
+ * @param[in] action GLFW 키보드 이벤트의 액션 플래그
+ * @return peekie::keyboard::Action
+ * @warning 알수 없는 키의 경우에는 peekie::keyboard::Action::none을 반환합니다.
+ */
 peekie::keyboard::Action peekie::keyboard::get_action_flag(int action) {
     static const std::unordered_map<int, peekie::keyboard::Action> action_flag = {
         { 0, peekie::keyboard::Action::release },
@@ -107,6 +126,12 @@ peekie::keyboard::Action peekie::keyboard::get_action_flag(int action) {
     return result->second;
 }
 
+/**
+ * @details GLFW 키보드 이벤트의 모디파이어 플래그를 peekie 모디파이어 플래그로 변환합니다.
+ * @param[in] action GLFW 키보드 이벤트의 모디파이어 플래그
+ * @return peekie::keyboard::Modifier
+ * @warning 알수 없는 키의 경우에는 peekie::keyboard::Modifier::none을 반환합니다. Modifier란 shift, control, alt 등의 조합키를 의미합니다.
+ */
 peekie::keyboard::Modifier peekie::keyboard::get_modifier_flag(int modifier) {
     static const std::unordered_map<int, peekie::keyboard::Modifier> modifier_flag = {
         { 0x0000, peekie::keyboard::Modifier::none },
