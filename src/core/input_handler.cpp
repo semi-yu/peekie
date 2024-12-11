@@ -1,5 +1,10 @@
 #include "./input_handler.hpp"
 
+/**
+ * @details 인풋 핸들러를 초기화합니다.
+ * @param[in] window GLFWwindow 포인터 객체.
+ * @warning  glfwCreateWindow()가 정상적으로 되어야 함. 정상 생성 여부를 확인하지 않습니다.
+ */
 peekie::core::InputHandler::InputHandler(GLFWwindow* window) {
     this->window = window;
     glfwSetWindowUserPointer(window, this);
@@ -16,6 +21,10 @@ peekie::core::InputHandler::InputHandler(GLFWwindow* window) {
     set_window_input_event_handler();
 }
 
+/**
+ * @details 마우스 버튼 이벤트에 대한 콜백 함수를 등록합니다.
+ * @return void
+ */
 void peekie::core::InputHandler::set_mouse_button_input_event_handler() {
     auto callback = [](GLFWwindow* window, int button, int action, int mod) {
         auto instance = static_cast<InputHandler*>(glfwGetWindowUserPointer(window));
@@ -28,6 +37,10 @@ void peekie::core::InputHandler::set_mouse_button_input_event_handler() {
     glfwSetMouseButtonCallback(window, callback);
 }
 
+/**
+ * @details 마우스 커서 위치 이벤트에 대한 콜백 함수를 등록합니다.
+ * @return void
+ */
 void peekie::core::InputHandler::set_mouse_move_input_event_hanlder() {
     auto callback = [](GLFWwindow* window, double pos_x, double pos_y) {
         auto instance = static_cast<InputHandler*>(glfwGetWindowUserPointer(window));
@@ -39,6 +52,10 @@ void peekie::core::InputHandler::set_mouse_move_input_event_hanlder() {
     glfwSetCursorPosCallback(window, callback);
 }
 
+/**
+ * @details 마우스 휠 이벤트에 대한 콜백 함수를 등록합니다.
+ * @return void
+ */
 void peekie::core::InputHandler::set_mouse_scroll_input_event_handler() {
     auto callback = [](GLFWwindow* window, double offset_x, double offset_y) {
         auto instance = static_cast<InputHandler*>(glfwGetWindowUserPointer(window));
@@ -50,6 +67,10 @@ void peekie::core::InputHandler::set_mouse_scroll_input_event_handler() {
     glfwSetScrollCallback(window, callback);
 }
 
+/**
+ * @details 마우스 커서가 윈도우에 들어감 여부의 이벤트에 대한 콜백 함수를 등록합니다.
+ * @return void
+ */
 void peekie::core::InputHandler::set_mouse_window_enter_input_event_handler() {
     auto callback = [](GLFWwindow* window, int entered) {
         auto instance = static_cast<InputHandler*>(glfwGetWindowUserPointer(window));
@@ -61,6 +82,10 @@ void peekie::core::InputHandler::set_mouse_window_enter_input_event_handler() {
     glfwSetCursorEnterCallback(window, callback);
 }
 
+/**
+ * @details 키보드 버튼 이벤트에 대한 콜백 함수를 등록합니다.
+ * @return void
+ */
 void peekie::core::InputHandler::set_keyboard_input_event_handler() {
     auto callback = [](GLFWwindow* window, int key, int scancode, int action, int mods) {
         auto instance = static_cast<InputHandler*>(glfwGetWindowUserPointer(window));
@@ -72,6 +97,10 @@ void peekie::core::InputHandler::set_keyboard_input_event_handler() {
     glfwSetKeyCallback(window, callback);
 }
 
+/**
+ * @details 윈도우 크기 조정 이벤트에 대한 콜백 함수를 등록합니다.
+ * @return void
+ */
 void peekie::core::InputHandler::set_window_input_event_handler() {
     auto callback = [](GLFWwindow* window, int width, int height) {
         auto instance = static_cast<InputHandler*>(glfwGetWindowUserPointer(window));
